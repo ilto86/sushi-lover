@@ -1,0 +1,169 @@
+body {
+    background-color: #9a9561;
+}
+
+.navbar {
+    margin-top: 20px;
+    color: #dee2e6;
+}
+
+.dropdown-menu-dark {
+    color: #dee2e6;
+    background-color: grey;
+    border-color: grey
+}
+
+.dropdown-menu-dark .dropdown-item {
+
+    color: black
+}
+
+.dropdown-menu-dark .dropdown-item:focus, .dropdown-menu-dark .dropdown-item:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, .15)
+}
+
+.dropdown-menu-dark .dropdown-item.active, .dropdown-menu-dark .dropdown-item:active {
+    color: #fff;
+    background-color: #333
+}
+
+.home_h1 {
+    text-align: center;
+    font-size: 60px;
+    margin-top: 20px;
+}
+
+.home_img1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 10%;
+}
+
+.home_img2 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 7.5%;
+}
+
+.nav_img {
+    height: 50px;
+    width: 50px;
+    margin-left: 10px;
+    margin-right: 15px;
+}
+
+.header_img {
+    height: 25px;
+    width: 25px;
+    margin-left: 10px;
+    margin-right: 15px;
+}
+
+.card {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 440px;
+}
+
+.border-dark {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 440px;
+    height: 280px;
+}
+
+.card-header {
+    text-align: center;
+}
+
+.card-text {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.btn-outline-primary {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alert-light {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 400px;
+    height: 80px;
+    color: red;
+    border: solid red 2px;
+}
+
+.img-thumbnail {
+    margin-bottom: 40px;
+    width: 320px;
+    height: 240px;
+}
+
+.container-sm {
+    width: 505px;
+}
+
+.form-control:read-only {
+    background-color: transparent;
+    resize: none;
+}
+
+.btn {
+    display: inline-block;
+    width: 100px;
+    height: 38px;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    text-align: center;
+}
+
+.buttons1 {
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    left: 165px;
+}
+
+.col-6 {
+    font-size: 20px;
+}
+
+.pagination {
+    margin-top: 50px;
+    justify-content: center;
+}
+
+.bar-p {
+    font-size: 20px;
+    color: #000400;
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 120px;
+}
+
+.progress {
+    height: 30px;
+    background-color: #00B018;
+
+}
+
+.progress-bar {
+    height: 30px;
+    background-color: #01FE23;
+}

@@ -1,0 +1,109 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% load profile_templatetags %}
+
+{% block title %}Profile Details{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.11.1/css/all.css">
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="text-center">
+
+            {% if not profile.is_complete %}
+
+                {% show_profile_complete_notification %}
+
+            {% endif %}
+
+            <br>
+
+            {% if not profile.username %}
+
+                <h2>Hello, Sushi lover</h2>
+
+            {% else %}
+
+                <h2>Hello, {{ profile.username }}</h2>
+
+            {% endif %}
+
+            {% if not profile.image %}
+
+                <img class="img-thumbnail" src="{% static 'images/anonymous_profile_icon.png' %}" alt="anonymous img">
+
+            {% else %}
+
+                <img class="img-thumbnail" src="{{ profile.image.url }}" alt="profile img">
+
+            {% endif %}
+
+            <br>
+
+            <div class="container-sm">
+
+                {% if not profile.first_name %}
+
+                    <h5>First name:</h5>
+                    <h5><u>The first name is not specified</u></h5>
+
+                {% else %}
+
+                    <h5>First name:</h5>
+                    <h5><u>{{ profile.first_name }}</u></h5>
+
+                {% endif %}
+
+                <br>
+
+                {% if not profile.last_name %}
+
+                    <h5>last name:</h5>
+                    <h5><u>The last name is not specified</u></h5>
+
+                {% else %}
+
+                    <h5>last name:</h5>
+                    <h5><u>{{ profile.last_name }}</u></h5>
+
+                {% endif %}
+
+                <br>
+
+                {% if not profile.age %}
+
+                    <h5>Age:</h5>
+                    <h5><u>The age is not specified</u></h5>
+
+                {% else %}
+
+                    <h5>Age:</h5>
+                    <h5><u>{{ profile.age }}</u></h5>
+
+                {% endif %}
+
+                <hr>
+
+                {% show_profile_stats %}
+
+                <hr>
+
+                <a class="btn btn-outline-primary" href="{% url 'profile edit' user.id %}">Edit</a>
+                <a class="btn btn-outline-primary" href="{% url 'profile delete' user.id %}">Delete</a>
+
+                <br>
+
+                <h5><a href="{% url 'homepage' %}">Go to Homepage</a></h5>
+
+                <br>
+
+                {% show_progress_bar %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

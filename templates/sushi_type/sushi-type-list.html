@@ -1,0 +1,97 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block title %}Sushi Types List{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <h4><a href="{% url 'homepage' %}">Back</a></h4>
+
+        <div class="text-center">
+            <h4><a href="{% url 'sushi type create' %}">Add new sushi type</a></h4>
+        </div>
+
+        <div class="row">
+
+            {% for sushi_type in sushi_types %}
+
+                <div class="col">
+                    <div class="card border-dark mb-3">
+                        <div class="card-header">
+                            <div class="container">
+                                <div class="row">
+
+                                    <div class="col">
+                                        <img class="header_img" src="{% static 'images/sushi-type-icon.jpg' %}" alt="sushi types img">
+                                    </div>
+
+                                    <div class="col-6">
+                                        {{ sushi_type.name }}
+                                    </div>
+
+                                    <div class="col">
+                                        <img class="header_img" src="{% static 'images/sushi-type-icon.jpg' %}" alt="sushi types img">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+
+                            {% if sushi_type.description %}
+                                <p class="card-text">{{ sushi_type.description }}</p>
+
+                            {% else %}
+                                <p class="card-text">No description.</p>
+
+                            {% endif %}
+
+                            <div class="buttons1">
+                                <a class="btn btn-outline-primary" href="{% url 'sushi type details' sushi_type.id %}">Details</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+        {% if sushi_types %}
+
+            <ul class="pagination">
+
+                {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link"
+                                             href="?page=1">&laquo; first</a></li>
+                    <li class="page-item"><a class="page-link"
+                                             href="?page={{ page_obj.previous_page_number }}">previous</a></li>
+
+                {% endif %}
+
+                <li class="page-item disabled"><a class="page-link"
+                                                  href="#">Page {{ page_obj.number }}
+                    of {{ page_obj.paginator.num_pages }}</a></li>
+
+                {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link"
+                                             href="?page={{ page_obj.next_page_number }}">next</a></li>
+                    <li class="page-item"><a class="page-link"
+                                             href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a></li>
+
+                {% endif %}
+
+            </ul>
+
+        {% else %}
+            <h1 class="home_h1">There are no sushi types yet.</h1>
+
+        {% endif %}
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% load static %}
+
+<h5>Your stats:</h5>
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col">
+            <h5>Sushi Types</h5>
+            {{ sushi_types_count }}
+        </div>
+
+        <div class="col">
+            <h5>Sushi</h5>
+            {{ sushi_all_count }}
+        </div>
+
+        <div class="col">
+            <h5>Sushi Bars</h5>
+            {{ sushi_bars_count }}
+        </div>
+
+    </div>
+
+    <br>
+
+    <div class="row">
+
+        <div class="col">
+            <i class="fas fa-thumbs-up fa-2x">Likes</i>
+            {{ sushi_type_likes_count }}
+        </div>
+
+        <div class="col">
+            <i class="fas fa-thumbs-up fa-2x">Likes</i>
+            {{ sushi_likes_count }}
+        </div>
+
+        <div class="col">
+            <i class="fas fa-thumbs-up fa-2x">Likes</i>
+            {{ sushi_bar_likes_count }}
+        </div>
+
+    </div>
+
+</div>

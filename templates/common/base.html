@@ -1,0 +1,115 @@
+{% load static %}
+{% load profile_templatetags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="{% static 'css/base.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/base_custom.css' %}" rel="stylesheet">
+
+    {% block style %}
+    {% endblock %}
+
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+
+        <img class="nav_img" src="{% static 'images/maki_navi.png' %}" alt="navbar img">
+        <a class="navbar-brand" href="{% url 'homepage' %}">Sushi Lovers</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor03">
+
+            <ul class="navbar-nav me-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'homepage' %}">Homepage</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'sushi list' %}">Sushi</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'sushi type list' %}">Sushi Type</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'sushi bar list' %}">Sushi Bar</a>
+                </li>
+
+                {% if request.user.is_authenticated %}
+
+                  <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        My Collection
+                      </a>
+
+                      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{% url 'sushi user list' %}">My Sushi</a></li>
+                        <li><a class="dropdown-item" href="{% url 'sushi type user list' %}">My Sushi Types</a></li>
+                        <li><a class="dropdown-item" href="{% url 'sushi bar user list' %}">My Sushi Bars</a></li>
+                      </ul>
+
+                    </li>
+                  </ul>
+
+                {% endif %}
+
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+
+                {% if request.user.is_authenticated %}
+                    {% show_profile_username %}
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'sign out' %}">Sign out</a>
+                    </li>
+
+                {% else %}
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'sign in' %}">Sign in</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'sign up' %}">Sign up</a>
+                    </li>
+
+                {% endif %}
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+{% block content %}
+{% endblock %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+{% block script %}
+{% endblock %}
+
+</body>
+</html>

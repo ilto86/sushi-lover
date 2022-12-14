@@ -1,0 +1,22 @@
+{% extends 'common/base.html' %}
+
+{% block title %}Delete Sushi Type{% endblock %}
+
+{% block content %}
+
+    <h1 class="home_h1">Are you sure you want to delete your sushi type?</h1>
+
+    <form action="{% url 'sushi type delete' object.id %}" method="post" novalidate>
+
+        <br>
+
+        {% csrf_token %}
+
+        <div class="buttons">
+            <button type="submit" class="btn btn-danger">Yes</button>
+            <a class="btn btn-info" href="{% url 'sushi type list' %}">No</a>
+        </div>
+
+    </form>
+
+{% endblock %}

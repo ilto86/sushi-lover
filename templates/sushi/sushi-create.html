@@ -1,0 +1,43 @@
+{% extends 'common/base.html' %}
+
+{% block title %}Create Sushi{% endblock %}
+
+{% block content %}
+
+    <form action="{% url 'sushi create' %}" method="post" enctype="multipart/form-data" novalidate>
+
+        <div class="card border-primary mb-3">
+
+            <div class="card-header">Create your new sushi</div>
+            <div class="card-body">
+
+                {{ form.errors }}
+
+                <p class="card-text">{{ form.label.label }}</p>
+                {{ form.label }}
+
+                <p class="card-text">{{ form.type.label }}</p>
+                {{ form.type}}
+
+                <p class="card-text">{{ form.ingredients.label }}</p>
+                {{ form.ingredients }}
+
+                <p class="card-text">{{ form.image.label }}</p>
+                {{ form.image }}
+
+                <hr>
+
+                {% csrf_token %}
+
+                <div class="buttons">
+                    <button type="submit" class="btn btn-outline-success">Create</button>
+                    <a class="btn btn-outline-info" href="{% url 'sushi list' %}">Cancel</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'common/base.html' %}
+
+{% block title %}Edit Sushi{% endblock %}
+
+{% block content %}
+
+    <form action="{% url 'sushi edit' object.id %}" method="post" enctype="multipart/form-data" novalidate>
+
+        <div class="card border-primary mb-3">
+             <div class="card-header">Edit your sushi</div>
+            <div class="card-body">
+
+                {{ form.errors }}
+
+                <p class="card-text">{{ form.label.label }}</p>
+                {{ form.label }}
+
+                <p class="card-text">{{ form.type.label }}</p>
+                {{ form.type }}
+
+                <p class="card-text">{{ form.ingredients.label }}</p>
+                {{ form.ingredients }}
+
+                <p class="card-text">{{ form.iamge.label }}</p>
+                {{ form.image }}
+
+                <hr>
+
+                {% csrf_token %}
+
+                <div class="buttons">
+                    <button type="submit" class="btn btn-outline-success">Edit</button>
+                    <a class="btn btn-outline-info" href="{{request.META.HTTP_REFERER}}">Cancel</a>
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% if not profile.username %}
+
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'profile details' profile_id %}">{{ username|title }} Profile</a>
+    </li>
+
+{% else %}
+
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'profile details' profile_id %}">{{ profile.username }} Profile</a>
+    </li>
+
+{% endif %}

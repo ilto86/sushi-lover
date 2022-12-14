@@ -1,0 +1,36 @@
+{% extends 'common/base.html' %}
+
+{% block title %}Sign In{% endblock %}
+{% block content %}
+
+    <form action="{% url 'sign in' %}" method="post" novalidate>
+
+        <div class="card border-primary mb-3">
+
+            <div class="card-header">Please fill all the fields to Sign In</div>
+
+            <div class="card-body">
+
+                {{ form.errors }}
+
+                <p class="card-text">{{ form.username.label }}</p>
+                {{ form.username }}
+
+                <p class="card-text">{{ form.password.label }}</p>
+                {{ form.password }}
+
+                <hr>
+
+                {% csrf_token %}
+
+                <div class="buttons">
+                    <input type="hidden" name="next" value="{{ request.GET.next }}">
+                    <button type="submit" class="btn btn-outline-primary">Sign In</button>
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+
+{% endblock %}

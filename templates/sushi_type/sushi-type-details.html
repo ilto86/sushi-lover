@@ -1,0 +1,162 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block title %}Sushi Type Details{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.11.1/css/all.css">
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <h4><a href="{% url 'sushi type list' %}">Back</a></h4>
+        <div class="text-center">
+            <div class="container-sm">
+
+                {% if not sushi_type.image %}
+                    <img class="img-thumbnail" src="{% static 'images/empty-plate-without-sushi.jpg' %}" alt="no sushi type img">
+
+                {% else %}
+                    <img class="img-thumbnail" src="{{ sushi_type.image.url }}" alt="sushi type img">
+
+                {% endif %}
+
+                <br>
+
+                <h5>Author:</h5>
+                {% if not sushi_type.user.profile.username %}
+                    <h5><u>Unknown Author</u></h5>
+
+                {% else %}
+                    <h5><u>{{ sushi_type.user.profile.username }}</u></h5>
+
+                {% endif %}
+
+                <br>
+
+                <h5>SushiType:</h5>
+                <h5><u>{{ sushi_type.name }}</u></h5>
+
+                <br>
+
+                <h5>Description:</h5>
+                {% if not sushi_type.description %}
+
+                    <label>
+                <textarea class="textarea form-control" rows="4" cols="75"
+                          readonly>No description.</textarea>
+                    </label>
+
+                    <br>
+
+                {% else %}
+
+                    <label>
+                <textarea class="textarea form-control" rows="4" cols="75"
+                          readonly>{{ sushi_type.description }}</textarea>
+                    </label>
+
+                    <br>
+
+                {% endif %}
+
+                <br>
+
+                {% if not is_owner %}
+
+                    {% if is_liked %}
+                        <h5>Have you changed your approval decision?</h5>
+
+                        <br>
+
+                        <a href="{% url 'sushi type like' sushi_type.id %}"><i class="fas fa-thumbs-down fa-2x"></i></a>
+
+                    {% else %}
+                        <h5>Do you want to give your approval for this sushi type?</h5>
+
+                        <br>
+
+
+                        <a href="{% url 'sushi type like' sushi_type.id %}"><i class="fas fa-thumbs-up fa-2x"></i></a>
+
+                    {% endif %}
+
+                {% endif %}
+
+                <p class="mt-2">Approvals: {{ sushi_type.likes_count }}</p>
+
+                <hr>
+
+                <h5>Comments:</h5>
+
+                <br>
+
+                {% if sushi_type_comments %}
+
+                    {% for comment in sushi_type_comments %}
+
+                        {% if not comment.user.profile.username %}
+
+                            <div>
+                                <p>Unknown Author</p>
+                                <label>
+                                <textarea class="textarea form-control" rows="4" cols="75"
+                                          readonly>{{ comment.comment }}</textarea>
+                                </label>
+                            </div>
+
+                            <br>
+
+                        {% else %}
+
+                            <div>
+                                <p>{{ comment.user.profile.username }}</p>
+                                <label>
+                                    <textarea class="textarea form-control" rows="4" cols="75"
+                                              readonly>{{ comment.comment }}</textarea>
+                                </label>
+                            </div>
+
+                            <br>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                {% else %}
+                    <h5>There are no comments yet.</h5>
+
+                {% endif %}
+
+                <br>
+
+                <form action="{% url 'sushi type comment' sushi_type.id %}" method="post" novalidate>
+
+                    {{ form.errors }}
+                    {{ sushi_type_comment_form }}
+
+                    <br>
+
+                    {% csrf_token %}
+
+                    <div class="buttons">
+                        <button type="submit" class="btn btn-outline-primary">Add</button>
+                    </div>
+
+                </form>
+
+                {% if is_owner %}
+
+                    <hr>
+
+                    <a class="btn btn-outline-primary" href="{% url 'sushi type edit' sushi_type.id %}">Edit</a>
+                    <a class="btn btn-outline-primary" href="{% url 'sushi type delete' sushi_type.id %}">Delete</a>
+
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

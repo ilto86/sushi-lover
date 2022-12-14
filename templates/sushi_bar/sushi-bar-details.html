@@ -1,0 +1,202 @@
+{% extends 'common/base.html' %}
+
+{% load static %}
+
+{% block title %}Sushi Bar Details{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.11.1/css/all.css">
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <h4><a href="{% url 'sushi bar list' %}">Back</a></h4>
+        <div class="text-center">
+            <div class="container-sm">
+
+                {% if not sushi_bar.image %}
+                    <img class="img-thumbnail" src="{% static 'images/no_sushi_bar.jpg' %}" alt="no sushi bar img">
+
+                {% else %}
+                    <img class="img-thumbnail" src="{{ sushi_bar.image.url }}" alt="sushi bar img">
+                {% endif %}
+
+                <br>
+
+                <h5>Author:</h5>
+                {% if not sushi_bar.user.profile.username %}
+                    <h5><u>Unknown Author</u></h5>
+
+                {% else %}
+                    <h5><u>{{ sushi_bar.user.profile.username }}</u></h5>
+
+                {% endif %}
+
+                <br>
+
+                <h5>Name:</h5>
+                <h5><u>{{ sushi_bar.name }}</u></h5>
+
+                <br>
+
+                <h5>Address:</h5>
+                {% if not sushi_bar.address %}
+                    <h5><u>No Address</u></h5>
+
+                {% else %}
+                    <h5><u>{{ sushi_bar.address }}</u></h5>
+
+                {% endif %}
+
+                <br>
+
+                <h5>Location:</h5>
+                {% if not sushi_bar_location %}
+                    <div>
+                        <h5><u>No Location</u></h5>
+                    </div>
+
+                {% else %}
+                    <div>
+                        {{ sushi_bar_location|safe }}
+                    </div>
+
+                {% endif %}
+
+                <br>
+
+                <h5>Sushi Bar Website:</h5>
+                {% if not sushi_bar.website %}
+                    <div>
+                        <h5><u>No Website</u></h5>
+                    </div>
+
+                {% else %}
+                    <div>
+                        <h5><u><a href="{{ sushi_bar.website }}" target="_blank">Visit the sushi bar's website here</a></u></h5>
+                    </div>
+
+                {% endif %}
+
+                <br>
+
+                <h5>Description:</h5>
+                {% if not sushi_bar.description %}
+                    <label>
+                <textarea class="textarea form-control" rows="4" cols="75"
+                          readonly>No description.</textarea>
+                    </label>
+
+                    <br>
+
+                {% else %}
+                    <label>
+                <textarea class="textarea form-control" rows="4" cols="75"
+                          readonly>{{ sushi_bar.description }}</textarea>
+                    </label>
+
+                    <br>
+
+                {% endif %}
+
+                <br>
+
+                {% if not is_owner %}
+                    {% if is_liked %}
+                        <h5>Have you been disappointed in this sushi bar?</h5>
+
+                        <br>
+
+                        <a href="{% url 'sushi bar like' sushi_bar.id %}"><i class="fas fa-thumbs-down fa-2x"></i></a>
+
+                    {% else %}
+                        <h5>Do you recommend the sushi bar?</h5>
+
+                        <br>
+
+                        <a href="{% url 'sushi bar like' sushi_bar.id %}"><i class="fas fa-thumbs-up fa-2x"></i></a>
+
+                    {% endif %}
+
+                {% endif %}
+
+                <p class="mt-2">Preferences: {{ sushi_bar.likes_count }}</p>
+
+                <hr>
+
+                <br>
+
+                <h5>Comments:</h5>
+
+                <br>
+
+                {% if sushi_bar_comments %}
+
+                    {% for comment in sushi_bar_comments %}
+
+                        {% if not comment.user.profile.username %}
+
+                            <div>
+                                <p>Unknown Author</p>
+                                <label>
+                                <textarea class="textarea form-control" rows="4" cols="75"
+                                          readonly>{{ comment.comment }}</textarea>
+                                </label>
+                            </div>
+
+                            <br>
+
+                        {% else %}
+
+                            <div>
+                                <p>{{ comment.user.profile.username }}</p>
+                                <label>
+                                    <textarea class="textarea form-control" rows="4" cols="75"
+                                              readonly>{{ comment.comment }}</textarea>
+                                </label>
+                            </div>
+
+                            <br>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                {% else %}
+                    <h5>There are no comments yet.</h5>
+
+                {% endif %}
+
+                <br>
+
+                <form action="{% url 'sushi bar comment' sushi_bar.id %}" method="post" novalidate>
+
+                    {{ form.errors }}
+
+                    {{ sushi_bar_comment_form }}
+
+                    <br>
+
+                    {% csrf_token %}
+
+                    <div class="buttons">
+                        <button type="submit" class="btn btn-outline-primary">Add</button>
+                    </div>
+
+                </form>
+
+                {% if is_owner %}
+
+                    <hr>
+
+                    <a class="btn btn-outline-primary" href="{% url 'sushi bar edit' sushi_bar.id %}">Edit</a>
+                    <a class="btn btn-outline-primary" href="{% url 'sushi bar delete' sushi_bar.id %}">Delete</a>
+
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
