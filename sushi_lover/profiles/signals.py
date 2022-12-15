@@ -13,19 +13,13 @@ UserModel = get_user_model()
 @receiver(post_save, sender=UserModel)
 def create_profile(sender, instance, created, **kwargs):
     if created:
-        profile = AppProfile(
-            user=instance,
-        )
+        profile = AppProfile(user=instance)
         profile.save()
-        print("profile_signal")
 
 
 @receiver(pre_save, sender=AppProfile)
 def is_profile_complete(sender, instance, **kwargs):
-    if instance.username and instance.first_name \
-            and instance.last_name and instance.age \
-            and instance.image:
-
+    if instance.username and instance.first_name and instance.last_name and instance.age and instance.image:
         instance.is_complete = True
     else:
         instance.is_complete = False
