@@ -13,7 +13,7 @@ class UserRegisterView(views.CreateView):
     form_class = UserCreateForm
     success_url = reverse_lazy("homepage")
 
-    # Signs the user in, after successful sign up
+    # Logged the user in, after successful sign up
     def form_valid(self, form):
         user_sing_in = super().form_valid(form)
         login(self.request, self.object)
@@ -23,6 +23,8 @@ class UserRegisterView(views.CreateView):
 class UserLoginView(auth_views.LoginView):
     template_name = "accounts/login.html"
     form_class = UserLoginForm
+    redirect_authenticated_user = True
+    redirect_field_name = 'next'
 
 
 class UserLogoutView(auth_views.LogoutView):

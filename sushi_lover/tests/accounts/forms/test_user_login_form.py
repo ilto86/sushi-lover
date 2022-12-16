@@ -1,6 +1,4 @@
 from django.contrib.auth import get_user_model
-from django.core.exceptions import ValidationError
-from django.db.models import signals
 from django.test import TestCase
 
 from sushi_lover.accounts.forms import UserLoginForm
@@ -10,8 +8,6 @@ UserModel = get_user_model()
 
 class TestBaseCase(TestCase):
     def setUp(self):
-        signals.post_save.receivers = []
-
         first_user_email = 'sushi_lover@test.net'
         first_user_password = 'TestPass123'
         self.first_user = UserModel.objects.create_user(
@@ -19,16 +15,12 @@ class TestBaseCase(TestCase):
             password=first_user_password,
         )
 
-        self.first_user.is_active = True
-
         second_user_email = 'sushi_hater@test.net'
         second_user_password = 'TestPass456'
         self.second_user = UserModel.objects.create_user(
             email=second_user_email,
             password=second_user_password,
         )
-
-        self.second_user.is_active = True
 
 
 class TestUserLoginForm(TestBaseCase):

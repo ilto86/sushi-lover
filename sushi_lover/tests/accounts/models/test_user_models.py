@@ -1,7 +1,5 @@
 from datetime import datetime
-
 from django.contrib.auth import get_user_model
-from django.db.models import signals
 from django.test import TestCase
 
 
@@ -10,8 +8,6 @@ UserModel = get_user_model()
 
 class TestBaseCase(TestCase):
     def setUp(self):
-        signals.post_save.receivers = []
-
         user_email = 'first_test@abv.com'
         user_password = 'TestPass123'
         self.user = UserModel.objects.create_user(
