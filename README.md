@@ -117,7 +117,7 @@ The ***profile*** has the following fields:
 #### 2.2. Sushi <a class="anchor" id="section_2_2"></a>
 
 The ***sushi*** could be either public or private. It can be viewed by all types of users but created, edited, and
-deleted only by its author. The author can put comments but can't like his own beer label. Only the other users can like
+deleted only by its author. The author can put comments but can't like his own sushi. Only the other users can like
 it.
 
 ##### 2.2.1 Sushi Characteristics <a class="anchor" id="section_2_2_1"></a>
