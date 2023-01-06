@@ -15,8 +15,9 @@ sushi and sushi bars.
     * [2.1. Users and Profiles](#section_2_1)
         * [2.1.1. Anonymous User](#section_2_1_1)
         * [2.1.2. Registered User](#section_2_1_2)
-        * [2.1.3. Administrative User](#section_2_1_3)
-        * [2.1.4. Profile Characteristics](#section_2_1_4)
+        * [2.1.3. Greetings Email](#section_2_1_3)
+        * [2.1.4. Administrative User](#section_2_1_4)
+        * [2.1.5. Profile Characteristics](#section_2_1_5)
     * [2.2. Sushi](#section_2_2)
         * [2.2.1. Sushi Characteristics](#section_2_2_1)
         * [2.2.2. Sushi Likes](#section_2_2_2)
@@ -84,14 +85,20 @@ and comment on all public posts in the system.
 
 # <p align="center"> ![Registered access](readme_images/registered_access.png) <p>
 
-##### 2.1.3 Administrative User <a class="anchor" id="section_2_1_3"></a>
+##### 2.1.3 Greetings Email <a class="anchor" id="section_2_1_3"></a>
+
+The ***greetings email*** function is a feature that allows registered users to receive a personalized greeting email upon signing up for the website. The email includes a message welcoming the user to the website and uses the user's email address as the name in the greeting. The greeting email is sent automatically upon successful registration and is sent using MailCatcher.
+
+# <p align="center"> ![Greetings Email](readme_images/greetings_email.png) <p>
+
+##### 2.1.4 Administrative User <a class="anchor" id="section_2_1_4"></a>
 
 The ***administrative user*** gets enabled through the admin site by the superuser. His 'is_staff' field is set to True.
 This user has all CRUD permissions over other users and their posts in the database.
 
 # <p align="center"> ![Administration access](readme_images/administration_access.png) <p>
 
-##### 2.1.4 Profile Characteristics <a class="anchor" id="section_2_1_4"></a>
+##### 2.1.5 Profile Characteristics <a class="anchor" id="section_2_1_5"></a>
 
 Every registered user has an account ***(profile)***. The profile allows the user to update his
 own information and to delete his own account. The profile page shows the completion of the user's profile and his
@@ -239,5 +246,50 @@ The ***sushi bar comment*** has the following fields:
 - user - ForeignKey relation with user
 
 # <p align="center"> ![Sushi Bar Comment](readme_images/sushi_bar_comment.png) <p>
+
+### 3. Mandatory requirements <a class="anchor" id="chapter3"></a>
+
+- [x] The application must be implemented using Django Framework
+- [x] The application must have at least 10 web pages(Can be created using function-based views or/and class based-views and At least 5 of them must be class-based views.)
+- [x] The application must have at least 5 forms.
+- [x] The application must have at least 5 templates.
+- [x] The application must have at least 5 independent models(models created by extending, inheritance, and one-to-one relation is considered one model).
+- [x] The application must have login/register functionality
+- [x] The application must have public part (A part of the website, which is accessible by everyone – un/authenticated
+  users and admins)
+- [x] The application must have private part (accessible only by authenticated user and admins)
+- [x] The application must have admin part (accessible only to admins)
+- [x] Unauthenticated users (public part) have only 'get' permissions e.g., landing page, details, about page
+- [x] Authenticated users (private part) have full CRUD for all their created content
+- [x] Admins have full CRUD functionalities
+- [x] Form validations
+- [x] To avoid crashes, implement Error Handling and Data Validations
+- [x] Use PostgreSQL as a database.
+- [x] Templates (your controllers/views must return HTML files) – one and the same template could be re-used/used
+  multiple times (with the according adjustments, if such needed)
+- [x] Use a source control system by choice – Github or Gitlab. You must have at least 5 commits + README
+
+### 4. Tests Coverage <a class="anchor" id="chapter5"></a>
+
+#### Account tests
+
+# <p align="center"> ![Account Tests](readme_images/tests_account.png) <p>
+
+#### Sushi tests
+
+# <p align="center"> ![Sushi Tests](readme_images/tests_sushi.png) <p>
+
+### 5. Additional Developments <a class="anchor" id="chapter5"></a>
+
+- [x] Responsive web design
+- [x] Class-based views
+- [x] Extended Django user
+- [x] Write tests (Unit & Integration) for your views/models/forms - at least 10 tests
+- [ ] Writing asynchronous view/s somewhere in the project
+- [ ] Extend your Django project with REST Capabilities
+- [ ] Host the application in a cloud environment
+- [ ] Additional functionality, not explicitly described in this section, will be counted as a bonus if it has practical usage
+
+
 
 
