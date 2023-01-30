@@ -10,8 +10,8 @@ sushi and sushi bars.
 
 ### Table of Contents
 
-* [1. Introduction](#chapter1)
-* [2. Website Overview](#chapter2)
+* [1. Introduction](#chapter_1)
+* [2. Website Overview](#chapter_2)
     * [2.1. Users and Profiles](#section_2_1)
         * [2.1.1. Anonymous User](#section_2_1_1)
         * [2.1.2. Registered User](#section_2_1_2)
@@ -32,15 +32,15 @@ sushi and sushi bars.
         * [2.4.3. Sushi Bar Comments](#section_2_4_3)
 * [3. Mandatory requirements](#chapter_3)
 * [4. Tests Coverage](#chapter_4)
-* [5. Additional Developments](#chapter5)
+* [5. Additional Developments](#chapter_5)
 
-### 1. Introduction <a class="anchor" id="chapter1"></a>
+### 1. Introduction <a class="anchor" id="chapter_1"></a>
 
 Website users have the opportunity to create their own accounts and publish their favorite sushi, sushi types, and
 sushi bars. Each post can be liked and commented on by other users. Each user collects their own posts and likes from other
 users.
 
-### 2. Website Overview <a class="anchor" id="chapter2"></a>
+### 2. Website Overview <a class="anchor" id="chapter_2"></a>
 
 Both registered and unregistered users have access to the website.
 
@@ -247,7 +247,7 @@ The ***sushi bar comment*** has the following fields:
 
 # <p align="center"> ![Sushi Bar Comment](readme_images/sushi_bar_comment.png) <p>
 
-### 3. Mandatory requirements <a class="anchor" id="chapter3"></a>
+### 3. Mandatory requirements <a class="anchor" id="chapter_3"></a>
 
 - [x] The application must be implemented using Django Framework
 - [x] The application must have at least 10 web pages(Can be created using function-based views or/and class based-views and At least 5 of them must be class-based views.)
@@ -269,7 +269,7 @@ The ***sushi bar comment*** has the following fields:
   multiple times (with the according adjustments, if such needed)
 - [x] Use a source control system by choice – Github or Gitlab. You must have at least 5 commits + README
 
-### 4. Tests Coverage <a class="anchor" id="chapter4"></a>
+### 4. Tests Coverage <a class="anchor" id="chapter_4"></a>
 
 #### Account tests
 
@@ -279,7 +279,7 @@ The ***sushi bar comment*** has the following fields:
 
 # <p align="center"> ![Sushi Tests](readme_images/tests_sushi.png) <p>
 
-### 5. Additional Developments <a class="anchor" id="chapter5"></a>
+### 5. Additional Developments <a class="anchor" id="chapter_5"></a>
 
 - [x] Responsive web design
 - [x] Class-based views
