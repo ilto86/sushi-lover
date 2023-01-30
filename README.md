@@ -30,8 +30,8 @@ sushi and sushi bars.
         * [2.4.1. Sushi Bar Characteristics](#section_2_4_1)
         * [2.4.2. Sushi Bar Likes](#section_2_4_2)
         * [2.4.3. Sushi Bar Comments](#section_2_4_3)
-* [3. Mandatory requirements](#section_3)
-* [4. Tests Coverage](#section_4)
+* [3. Mandatory requirements](#chapter_3)
+* [4. Tests Coverage](#chapter_4)
 * [5. Additional Developments](#chapter5)
 
 ### 1. Introduction <a class="anchor" id="chapter1"></a>
@@ -269,7 +269,7 @@ The ***sushi bar comment*** has the following fields:
   multiple times (with the according adjustments, if such needed)
 - [x] Use a source control system by choice – Github or Gitlab. You must have at least 5 commits + README
 
-### 4. Tests Coverage <a class="anchor" id="chapter5"></a>
+### 4. Tests Coverage <a class="anchor" id="chapter4"></a>
 
 #### Account tests
 
